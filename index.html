@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maulana Adiatma Portfolio</title>
+<meta name="description" content="Portfolio of Maulana Adiatma, an Information Systems student and web developer who builds calm, useful websites and apps, from understanding the problem to shipping it.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Maulana Adiatma">
+<meta property="og:title" content="Maulana Adiatma Portfolio">
+<meta property="og:description" content="Portfolio of Maulana Adiatma, an Information Systems student and web developer who builds calm, useful websites and apps, from understanding the problem to shipping it.">
+<meta property="og:url" content="https://portofolio-rouge-nu-58.vercel.app/">
+<meta property="og:image" content="https://portofolio-rouge-nu-58.vercel.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://portofolio-rouge-nu-58.vercel.app/">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#c9cdbd" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#070a14" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<script>
+(function(){
+  var r=document.documentElement,m=null,t=r.getAttribute("data-theme");
+  try{m=localStorage.getItem("ma-mode")}catch(e){}
+  var night=m?m==="night":(t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-mode",night?"night":"day");
+  r.classList.add("js");
+})();
+</script>
+  <script type="module" crossorigin src="/assets/main-CJvwJDx2.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/scrollMemory-BZ7W2q5P.js">
+  <link rel="stylesheet" crossorigin href="/assets/scrollMemory-DYDMtzEs.css">
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<div class="frame" id="frame">
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <canvas id="soft" aria-hidden="true"></canvas>
+  <div class="wash" id="wash"></div>
+  <canvas id="life" aria-hidden="true"></canvas>
+
+  <div class="scroller" id="scroller">
+    <div class="page">
+
+      <header class="nav">
+        <a class="brand" href="#top" data-go="top" aria-label="Maulana Adiatma, back to top">
+          <svg viewBox="0 0 36 36" aria-hidden="true"><circle class="mk" cx="18" cy="18" r="18"/><path class="mk2" d="M8 24.5Q12.5 12 18 21.5Q23.5 12 28 24.5" fill="none" stroke-width="2.4" stroke-linecap="round"/></svg>
+          <span>Maulana Adiatma</span>
+        </a>
+        <nav class="menu" aria-label="Sections">
+          <a href="#about" data-go="about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span>About</span></a>
+          <a href="#skills" data-go="skills"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></svg><span>Skills</span></a>
+          <a href="#projects" data-go="projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg><span>Projects</span></a>
+          <a href="#offclock" data-go="offclock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 9h12v4.5a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5z"/><path d="M16.5 10.5h1.5a2.5 2.5 0 0 1 0 5h-1.6"/><path d="M8.5 3.5v2.5M12.5 3.5v2.5"/></svg><span>Bonus</span></a>
+          <a href="#contact" data-go="contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg><span>Contact</span></a>
+        </nav>
+        <div class="nav-r">
+          <button class="mode" id="modeBtn" type="button" aria-label="Switch to night" aria-pressed="false">
+            <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+            <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+          </button>
+        </div>
+      </header>
+
+
+      <!-- HERO -->
+      <section class="hero" id="top">
+        <div class="hero-inner">
+          <h1 id="heroTitle">Welcome to my <em>portfolio</em>.</h1>
+          <p class="hero-sub">I build calm, useful software that solves your problems.</p>
+          <a class="hero-cta" href="#contact" data-go="contact">Get in touch<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="hero-foot">
+          <span class="live"><i></i><span id="liveText">Live WebGL landscape · <b id="fps">60</b> fps<span class="opt"> · no video file</span></span></span>
+          <a class="down" href="#about" data-go="about" aria-label="Scroll to About"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+        </div>
+      </section>
+
+      <!-- ABOUT
+           Text: src/content/about.json. GitHub graph: generated at build time (vite.config.js). -->
+      <section class="about" id="about">
+        <div class="wrap panel-smoke">
+          <div class="ab-name">
+            <h2 class="ab-hello">I’m <br>Maulana</h2>
+            <a class="btn-light" href="/CV-ATS-Maulana.pdf" target="_blank" rel="noopener">See my CV</a>
+          </div>
+
+          <div class="ab-photo">
+            <span class="about-word" aria-hidden="true">AI NATIVE</span>
+            <div class="stage" id="stage" aria-roledescription="carousel" aria-label="Photos of Maulana Adiatma">
+              <canvas class="orbit" id="orbitBack" aria-hidden="true"></canvas>
+              <div class="pc" data-pos="center"><img src="/about-1.jpeg" alt="Maulana Adiatma, photo 1" draggable="false"></div>
+              <div class="pc" data-pos="right"><img src="/about-2.jpeg" alt="Maulana Adiatma, photo 2" draggable="false"></div>
+              <div class="pc" data-pos="left"><img src="/about-3.jpeg" alt="Maulana Adiatma, photo 3" draggable="false"></div>
+              <canvas class="orbit front" id="orbitFront" aria-hidden="true"></canvas>
+            </div>
+            <div class="cc">
+              <button class="cbtn" id="prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+              <div class="dots"><button type="button" aria-label="Photo 1"></button><button type="button" aria-label="Photo 2"></button><button type="button" aria-label="Photo 3"></button></div>
+              <button class="cbtn" id="next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+
+          <p class="ab-desc">I study Information Systems at Universitas Sriwijaya and like owning a product from start to finish: talking to users, mapping the flow, writing the code and shipping it. Most of my projects start with a real problem at a small business or on campus.</p>
+
+          <div class="ab-title">
+            <p class="ab-big">AI Native <br>Engineer</p>
+            <p class="ab-roles">Web Developer | AI Workflow Explorer</p>
+          </div>
+
+          <div class="ab-social">
+            <div class="ab-icons">
+              <a class="soc-ic" href="https://www.linkedin.com/in/maulanaadiatma/" target="_blank" rel="noopener" aria-label="LinkedIn" data-tip="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a class="soc-ic" href="https://www.instagram.com/adiatma__23/" target="_blank" rel="noopener" aria-label="Instagram" data-tip="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.4 6.6h.01"/></svg></a>
+              <a class="soc-ic" href="https://www.threads.com/@adiatma__23" target="_blank" rel="noopener" aria-label="Threads" data-tip="Threads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.6 8.4C16.7 5.6 14.6 4 11.9 4 7.6 4 5 7.2 5 12s2.6 8 6.9 8c3.6 0 6.1-2 6.1-4.9 0-2.6-2-4.2-5-4.2-2.4 0-4 1.2-4 2.8 0 1.5 1.3 2.6 3.1 2.6 2.5 0 3.9-1.9 3.9-5 0-.8-.1-1.5-.3-2.2"/></svg></a>
+              <a class="soc-ic" href="https://github.com/mauinGit" target="_blank" rel="noopener" aria-label="GitHub" data-tip="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+            </div>
+            <div class="gh">
+              <p class="gh-title">194 contributions in the last year</p>
+              <svg viewBox="0 0 686 88" role="img" aria-label="GitHub contribution graph"><rect class="l0" x="0" y="0" width="10" height="10" rx="2"/><rect class="l0" x="0" y="13" width="10" height="10" rx="2"/><rect class="l0" x="0" y="26" width="10" height="10" rx="2"/><rect class="l0" x="0" y="39" width="10" height="10" rx="2"/><rect class="l0" x="0" y="52" width="10" height="10" rx="2"/><rect class="l0" x="0" y="65" width="10" height="10" rx="2"/><rect class="l0" x="0" y="78" width="10" height="10" rx="2"/><rect class="l0" x="13" y="0" width="10" height="10" rx="2"/><rect class="l0" x="13" y="13" width="10" height="10" rx="2"/><rect class="l0" x="13" y="26" width="10" height="10" rx="2"/><rect class="l1" x="13" y="39" width="10" height="10" rx="2"/><rect class="l3" x="13" y="52" width="10" height="10" rx="2"/><rect class="l1" x="13" y="65" width="10" height="10" rx="2"/><rect class="l0" x="13" y="78" width="10" height="10" rx="2"/><rect class="l1" x="26" y="0" width="10" height="10" rx="2"/><rect class="l0" x="26" y="13" width="10" height="10" rx="2"/><rect class="l0" x="26" y="26" width="10" height="10" rx="2"/><rect class="l0" x="26" y="39" width="10" height="10" rx="2"/><rect class="l2" x="26" y="52" width="10" height="10" rx="2"/><rect class="l1" x="26" y="65" width="10" height="10" rx="2"/><rect class="l3" x="26" y="78" width="10" height="10" rx="2"/><rect class="l0" x="39" y="0" width="10" height="10" rx="2"/><rect class="l0" x="39" y="13" width="10" height="10" rx="2"/><rect class="l0" x="39" y="26" width="10" height="10" rx="2"/><rect class="l0" x="39" y="39" width="10" height="10" rx="2"/><rect class="l0" x="39" y="52" width="10" height="10" rx="2"/><rect class="l0" x="39" y="65" width="10" height="10" rx="2"/><rect class="l0" x="39" y="78" width="10" height="10" rx="2"/><rect class="l0" x="52" y="0" width="10" height="10" rx="2"/><rect class="l1" x="52" y="13" width="10" height="10" rx="2"/><rect class="l0" x="52" y="26" width="10" height="10" rx="2"/><rect class="l0" x="52" y="39" width="10" height="10" rx="2"/><rect class="l0" x="52" y="52" width="10" height="10" rx="2"/><rect class="l0" x="52" y="65" width="10" height="10" rx="2"/><rect class="l0" x="52" y="78" width="10" height="10" rx="2"/><rect class="l0" x="65" y="0" width="10" height="10" rx="2"/><rect class="l0" x="65" y="13" width="10" height="10" rx="2"/><rect class="l0" x="65" y="26" width="10" height="10" rx="2"/><rect class="l0" x="65" y="39" width="10" height="10" rx="2"/><rect class="l0" x="65" y="52" width="10" height="10" rx="2"/><rect class="l0" x="65" y="65" width="10" height="10" rx="2"/><rect class="l0" x="65" y="78" width="10" height="10" rx="2"/><rect class="l0" x="78" y="0" width="10" height="10" rx="2"/><rect class="l0" x="78" y="13" width="10" height="10" rx="2"/><rect class="l0" x="78" y="26" width="10" height="10" rx="2"/><rect class="l0" x="78" y="39" width="10" height="10" rx="2"/><rect class="l0" x="78" y="52" width="10" height="10" rx="2"/><rect class="l1" x="78" y="65" width="10" height="10" rx="2"/><rect class="l0" x="78" y="78" width="10" height="10" rx="2"/><rect class="l1" x="91" y="0" width="10" height="10" rx="2"/><rect class="l0" x="91" y="13" width="10" height="10" rx="2"/><rect class="l0" x="91" y="26" width="10" height="10" rx="2"/><rect class="l0" x="91" y="39" width="10" height="10" rx="2"/><rect class="l0" x="91" y="52" width="10" height="10" rx="2"/><rect class="l0" x="91" y="65" width="10" height="10" rx="2"/><rect class="l0" x="91" y="78" width="10" height="10" rx="2"/><rect class="l0" x="104" y="0" width="10" height="10" rx="2"/><rect class="l0" x="104" y="13" width="10" height="10" rx="2"/><rect class="l0" x="104" y="26" width="10" height="10" rx="2"/><rect class="l0" x="104" y="39" width="10" height="10" rx="2"/><rect class="l0" x="104" y="52" width="10" height="10" rx="2"/><rect class="l0" x="104" y="65" width="10" height="10" rx="2"/><rect class="l0" x="104" y="78" width="10" height="10" rx="2"/><rect class="l0" x="117" y="0" width="10" height="10" rx="2"/><rect class="l0" x="117" y="13" width="10" height="10" rx="2"/><rect class="l0" x="117" y="26" width="10" height="10" rx="2"/><rect class="l0" x="117" y="39" width="10" height="10" rx="2"/><rect class="l0" x="117" y="52" width="10" height="10" rx="2"/><rect class="l4" x="117" y="65" width="10" height="10" rx="2"/><rect class="l4" x="117" y="78" width="10" height="10" rx="2"/><rect class="l4" x="130" y="0" width="10" height="10" rx="2"/><rect class="l0" x="130" y="13" width="10" height="10" rx="2"/><rect class="l0" x="130" y="26" width="10" height="10" rx="2"/><rect class="l0" x="130" y="39" width="10" height="10" rx="2"/><rect class="l0" x="130" y="52" width="10" height="10" rx="2"/><rect class="l0" x="130" y="65" width="10" height="10" rx="2"/><rect class="l0" x="130" y="78" width="10" height="10" rx="2"/><rect class="l0" x="143" y="0" width="10" height="10" rx="2"/><rect class="l0" x="143" y="13" width="10" height="10" rx="2"/><rect class="l0" x="143" y="26" width="10" height="10" rx="2"/><rect class="l0" x="143" y="39" width="10" height="10" rx="2"/><rect class="l0" x="143" y="52" width="10" height="10" rx="2"/><rect class="l0" x="143" y="65" width="10" height="10" rx="2"/><rect class="l0" x="143" y="78" width="10" height="10" rx="2"/><rect class="l0" x="156" y="0" width="10" height="10" rx="2"/><rect class="l0" x="156" y="13" width="10" height="10" rx="2"/><rect class="l0" x="156" y="26" width="10" height="10" rx="2"/><rect class="l0" x="156" y="39" width="10" height="10" rx="2"/><rect class="l0" x="156" y="52" width="10" height="10" rx="2"/><rect class="l0" x="156" y="65" width="10" height="10" rx="2"/><rect class="l0" x="156" y="78" width="10" height="10" rx="2"/><rect class="l0" x="169" y="0" width="10" height="10" rx="2"/><rect class="l0" x="169" y="13" width="10" height="10" rx="2"/><rect class="l0" x="169" y="26" width="10" height="10" rx="2"/><rect class="l0" x="169" y="39" width="10" height="10" rx="2"/><rect class="l0" x="169" y="52" width="10" height="10" rx="2"/><rect class="l0" x="169" y="65" width="10" height="10" rx="2"/><rect class="l0" x="169" y="78" width="10" height="10" rx="2"/><rect class="l0" x="182" y="0" width="10" height="10" rx="2"/><rect class="l0" x="182" y="13" width="10" height="10" rx="2"/><rect class="l0" x="182" y="26" width="10" height="10" rx="2"/><rect class="l0" x="182" y="39" width="10" height="10" rx="2"/><rect class="l0" x="182" y="52" width="10" height="10" rx="2"/><rect class="l0" x="182" y="65" width="10" height="10" rx="2"/><rect class="l0" x="182" y="78" width="10" height="10" rx="2"/><rect class="l0" x="195" y="0" width="10" height="10" rx="2"/><rect class="l0" x="195" y="13" width="10" height="10" rx="2"/><rect class="l0" x="195" y="26" width="10" height="10" rx="2"/><rect class="l0" x="195" y="39" width="10" height="10" rx="2"/><rect class="l0" x="195" y="52" width="10" height="10" rx="2"/><rect class="l0" x="195" y="65" width="10" height="10" rx="2"/><rect class="l0" x="195" y="78" width="10" height="10" rx="2"/><rect class="l0" x="208" y="0" width="10" height="10" rx="2"/><rect class="l0" x="208" y="13" width="10" height="10" rx="2"/><rect class="l0" x="208" y="26" width="10" height="10" rx="2"/><rect class="l0" x="208" y="39" width="10" height="10" rx="2"/><rect class="l0" x="208" y="52" width="10" height="10" rx="2"/><rect class="l0" x="208" y="65" width="10" height="10" rx="2"/><rect class="l0" x="208" y="78" width="10" height="10" rx="2"/><rect class="l0" x="221" y="0" width="10" height="10" rx="2"/><rect class="l0" x="221" y="13" width="10" height="10" rx="2"/><rect class="l0" x="221" y="26" width="10" height="10" rx="2"/><rect class="l0" x="221" y="39" width="10" height="10" rx="2"/><rect class="l0" x="221" y="52" width="10" height="10" rx="2"/><rect class="l0" x="221" y="65" width="10" height="10" rx="2"/><rect class="l0" x="221" y="78" width="10" height="10" rx="2"/><rect class="l0" x="234" y="0" width="10" height="10" rx="2"/><rect class="l0" x="234" y="13" width="10" height="10" rx="2"/><rect class="l0" x="234" y="26" width="10" height="10" rx="2"/><rect class="l0" x="234" y="39" width="10" height="10" rx="2"/><rect class="l0" x="234" y="52" width="10" height="10" rx="2"/><rect class="l0" x="234" y="65" width="10" height="10" rx="2"/><rect class="l0" x="234" y="78" width="10" height="10" rx="2"/><rect class="l0" x="247" y="0" width="10" height="10" rx="2"/><rect class="l1" x="247" y="13" width="10" height="10" rx="2"/><rect class="l0" x="247" y="26" width="10" height="10" rx="2"/><rect class="l0" x="247" y="39" width="10" height="10" rx="2"/><rect class="l0" x="247" y="52" width="10" height="10" rx="2"/><rect class="l0" x="247" y="65" width="10" height="10" rx="2"/><rect class="l0" x="247" y="78" width="10" height="10" rx="2"/><rect class="l0" x="260" y="0" width="10" height="10" rx="2"/><rect class="l0" x="260" y="13" width="10" height="10" rx="2"/><rect class="l0" x="260" y="26" width="10" height="10" rx="2"/><rect class="l0" x="260" y="39" width="10" height="10" rx="2"/><rect class="l0" x="260" y="52" width="10" height="10" rx="2"/><rect class="l0" x="260" y="65" width="10" height="10" rx="2"/><rect class="l0" x="260" y="78" width="10" height="10" rx="2"/><rect class="l0" x="273" y="0" width="10" height="10" rx="2"/><rect class="l1" x="273" y="13" width="10" height="10" rx="2"/><rect class="l0" x="273" y="26" width="10" height="10" rx="2"/><rect class="l0" x="273" y="39" width="10" height="10" rx="2"/><rect class="l0" x="273" y="52" width="10" height="10" rx="2"/><rect class="l4" x="273" y="65" width="10" height="10" rx="2"/><rect class="l3" x="273" y="78" width="10" height="10" rx="2"/><rect class="l2" x="286" y="0" width="10" height="10" rx="2"/><rect class="l0" x="286" y="13" width="10" height="10" rx="2"/><rect class="l0" x="286" y="26" width="10" height="10" rx="2"/><rect class="l0" x="286" y="39" width="10" height="10" rx="2"/><rect class="l0" x="286" y="52" width="10" height="10" rx="2"/><rect class="l0" x="286" y="65" width="10" height="10" rx="2"/><rect class="l0" x="286" y="78" width="10" height="10" rx="2"/><rect class="l0" x="299" y="0" width="10" height="10" rx="2"/><rect class="l0" x="299" y="13" width="10" height="10" rx="2"/><rect class="l0" x="299" y="26" width="10" height="10" rx="2"/><rect class="l0" x="299" y="39" width="10" height="10" rx="2"/><rect class="l0" x="299" y="52" width="10" height="10" rx="2"/><rect class="l2" x="299" y="65" width="10" height="10" rx="2"/><rect class="l0" x="299" y="78" width="10" height="10" rx="2"/><rect class="l1" x="312" y="0" width="10" height="10" rx="2"/><rect class="l1" x="312" y="13" width="10" height="10" rx="2"/><rect class="l0" x="312" y="26" width="10" height="10" rx="2"/><rect class="l0" x="312" y="39" width="10" height="10" rx="2"/><rect class="l0" x="312" y="52" width="10" height="10" rx="2"/><rect class="l0" x="312" y="65" width="10" height="10" rx="2"/><rect class="l0" x="312" y="78" width="10" height="10" rx="2"/><rect class="l3" x="325" y="0" width="10" height="10" rx="2"/><rect class="l0" x="325" y="13" width="10" height="10" rx="2"/><rect class="l0" x="325" y="26" width="10" height="10" rx="2"/><rect class="l0" x="325" y="39" width="10" height="10" rx="2"/><rect class="l0" x="325" y="52" width="10" height="10" rx="2"/><rect class="l0" x="325" y="65" width="10" height="10" rx="2"/><rect class="l0" x="325" y="78" width="10" height="10" rx="2"/><rect class="l0" x="338" y="0" width="10" height="10" rx="2"/><rect class="l1" x="338" y="13" width="10" height="10" rx="2"/><rect class="l0" x="338" y="26" width="10" height="10" rx="2"/><rect class="l0" x="338" y="39" width="10" height="10" rx="2"/><rect class="l0" x="338" y="52" width="10" height="10" rx="2"/><rect class="l0" x="338" y="65" width="10" height="10" rx="2"/><rect class="l1" x="338" y="78" width="10" height="10" rx="2"/><rect class="l1" x="351" y="0" width="10" height="10" rx="2"/><rect class="l0" x="351" y="13" width="10" height="10" rx="2"/><rect class="l0" x="351" y="26" width="10" height="10" rx="2"/><rect class="l0" x="351" y="39" width="10" height="10" rx="2"/><rect class="l0" x="351" y="52" width="10" height="10" rx="2"/><rect class="l0" x="351" y="65" width="10" height="10" rx="2"/><rect class="l0" x="351" y="78" width="10" height="10" rx="2"/><rect class="l3" x="364" y="0" width="10" height="10" rx="2"/><rect class="l1" x="364" y="13" width="10" height="10" rx="2"/><rect class="l0" x="364" y="26" width="10" height="10" rx="2"/><rect class="l0" x="364" y="39" width="10" height="10" rx="2"/><rect class="l0" x="364" y="52" width="10" height="10" rx="2"/><rect class="l0" x="364" y="65" width="10" height="10" rx="2"/><rect class="l0" x="364" y="78" width="10" height="10" rx="2"/><rect class="l4" x="377" y="0" width="10" height="10" rx="2"/><rect class="l1" x="377" y="13" width="10" height="10" rx="2"/><rect class="l2" x="377" y="26" width="10" height="10" rx="2"/><rect class="l0" x="377" y="39" width="10" height="10" rx="2"/><rect class="l0" x="377" y="52" width="10" height="10" rx="2"/><rect class="l0" x="377" y="65" width="10" height="10" rx="2"/><rect class="l0" x="377" y="78" width="10" height="10" rx="2"/><rect class="l0" x="390" y="0" width="10" height="10" rx="2"/><rect class="l4" x="390" y="13" width="10" height="10" rx="2"/><rect class="l0" x="390" y="26" width="10" height="10" rx="2"/><rect class="l0" x="390" y="39" width="10" height="10" rx="2"/><rect class="l0" x="390" y="52" width="10" height="10" rx="2"/><rect class="l0" x="390" y="65" width="10" height="10" rx="2"/><rect class="l0" x="390" y="78" width="10" height="10" rx="2"/><rect class="l0" x="403" y="0" width="10" height="10" rx="2"/><rect class="l0" x="403" y="13" width="10" height="10" rx="2"/><rect class="l0" x="403" y="26" width="10" height="10" rx="2"/><rect class="l0" x="403" y="39" width="10" height="10" rx="2"/><rect class="l0" x="403" y="52" width="10" height="10" rx="2"/><rect class="l0" x="403" y="65" width="10" height="10" rx="2"/><rect class="l0" x="403" y="78" width="10" height="10" rx="2"/><rect class="l0" x="416" y="0" width="10" height="10" rx="2"/><rect class="l3" x="416" y="13" width="10" height="10" rx="2"/><rect class="l2" x="416" y="26" width="10" height="10" rx="2"/><rect class="l2" x="416" y="39" width="10" height="10" rx="2"/><rect class="l0" x="416" y="52" width="10" height="10" rx="2"/><rect class="l0" x="416" y="65" width="10" height="10" rx="2"/><rect class="l0" x="416" y="78" width="10" height="10" rx="2"/><rect class="l0" x="429" y="0" width="10" height="10" rx="2"/><rect class="l0" x="429" y="13" width="10" height="10" rx="2"/><rect class="l0" x="429" y="26" width="10" height="10" rx="2"/><rect class="l0" x="429" y="39" width="10" height="10" rx="2"/><rect class="l0" x="429" y="52" width="10" height="10" rx="2"/><rect class="l0" x="429" y="65" width="10" height="10" rx="2"/><rect class="l0" x="429" y="78" width="10" height="10" rx="2"/><rect class="l0" x="442" y="0" width="10" height="10" rx="2"/><rect class="l0" x="442" y="13" width="10" height="10" rx="2"/><rect class="l0" x="442" y="26" width="10" height="10" rx="2"/><rect class="l0" x="442" y="39" width="10" height="10" rx="2"/><rect class="l0" x="442" y="52" width="10" height="10" rx="2"/><rect class="l0" x="442" y="65" width="10" height="10" rx="2"/><rect class="l0" x="442" y="78" width="10" height="10" rx="2"/><rect class="l0" x="455" y="0" width="10" height="10" rx="2"/><rect class="l0" x="455" y="13" width="10" height="10" rx="2"/><rect class="l0" x="455" y="26" width="10" height="10" rx="2"/><rect class="l0" x="455" y="39" width="10" height="10" rx="2"/><rect class="l0" x="455" y="52" width="10" height="10" rx="2"/><rect class="l0" x="455" y="65" width="10" height="10" rx="2"/><rect class="l0" x="455" y="78" width="10" height="10" rx="2"/><rect class="l0" x="468" y="0" width="10" height="10" rx="2"/><rect class="l0" x="468" y="13" width="10" height="10" rx="2"/><rect class="l0" x="468" y="26" width="10" height="10" rx="2"/><rect class="l0" x="468" y="39" width="10" height="10" rx="2"/><rect class="l0" x="468" y="52" width="10" height="10" rx="2"/><rect class="l0" x="468" y="65" width="10" height="10" rx="2"/><rect class="l0" x="468" y="78" width="10" height="10" rx="2"/><rect class="l0" x="481" y="0" width="10" height="10" rx="2"/><rect class="l0" x="481" y="13" width="10" height="10" rx="2"/><rect class="l0" x="481" y="26" width="10" height="10" rx="2"/><rect class="l0" x="481" y="39" width="10" height="10" rx="2"/><rect class="l0" x="481" y="52" width="10" height="10" rx="2"/><rect class="l0" x="481" y="65" width="10" height="10" rx="2"/><rect class="l0" x="481" y="78" width="10" height="10" rx="2"/><rect class="l0" x="494" y="0" width="10" height="10" rx="2"/><rect class="l0" x="494" y="13" width="10" height="10" rx="2"/><rect class="l0" x="494" y="26" width="10" height="10" rx="2"/><rect class="l0" x="494" y="39" width="10" height="10" rx="2"/><rect class="l0" x="494" y="52" width="10" height="10" rx="2"/><rect class="l0" x="494" y="65" width="10" height="10" rx="2"/><rect class="l0" x="494" y="78" width="10" height="10" rx="2"/><rect class="l0" x="507" y="0" width="10" height="10" rx="2"/><rect class="l0" x="507" y="13" width="10" height="10" rx="2"/><rect class="l0" x="507" y="26" width="10" height="10" rx="2"/><rect class="l0" x="507" y="39" width="10" height="10" rx="2"/><rect class="l0" x="507" y="52" width="10" height="10" rx="2"/><rect class="l0" x="507" y="65" width="10" height="10" rx="2"/><rect class="l1" x="507" y="78" width="10" height="10" rx="2"/><rect class="l0" x="520" y="0" width="10" height="10" rx="2"/><rect class="l0" x="520" y="13" width="10" height="10" rx="2"/><rect class="l0" x="520" y="26" width="10" height="10" rx="2"/><rect class="l0" x="520" y="39" width="10" height="10" rx="2"/><rect class="l0" x="520" y="52" width="10" height="10" rx="2"/><rect class="l0" x="520" y="65" width="10" height="10" rx="2"/><rect class="l0" x="520" y="78" width="10" height="10" rx="2"/><rect class="l0" x="533" y="0" width="10" height="10" rx="2"/><rect class="l0" x="533" y="13" width="10" height="10" rx="2"/><rect class="l0" x="533" y="26" width="10" height="10" rx="2"/><rect class="l0" x="533" y="39" width="10" height="10" rx="2"/><rect class="l0" x="533" y="52" width="10" height="10" rx="2"/><rect class="l0" x="533" y="65" width="10" height="10" rx="2"/><rect class="l0" x="533" y="78" width="10" height="10" rx="2"/><rect class="l0" x="546" y="0" width="10" height="10" rx="2"/><rect class="l0" x="546" y="13" width="10" height="10" rx="2"/><rect class="l0" x="546" y="26" width="10" height="10" rx="2"/><rect class="l0" x="546" y="39" width="10" height="10" rx="2"/><rect class="l0" x="546" y="52" width="10" height="10" rx="2"/><rect class="l0" x="546" y="65" width="10" height="10" rx="2"/><rect class="l0" x="546" y="78" width="10" height="10" rx="2"/><rect class="l0" x="559" y="0" width="10" height="10" rx="2"/><rect class="l0" x="559" y="13" width="10" height="10" rx="2"/><rect class="l0" x="559" y="26" width="10" height="10" rx="2"/><rect class="l1" x="559" y="39" width="10" height="10" rx="2"/><rect class="l0" x="559" y="52" width="10" height="10" rx="2"/><rect class="l1" x="559" y="65" width="10" height="10" rx="2"/><rect class="l2" x="559" y="78" width="10" height="10" rx="2"/><rect class="l0" x="572" y="0" width="10" height="10" rx="2"/><rect class="l0" x="572" y="13" width="10" height="10" rx="2"/><rect class="l0" x="572" y="26" width="10" height="10" rx="2"/><rect class="l0" x="572" y="39" width="10" height="10" rx="2"/><rect class="l1" x="572" y="52" width="10" height="10" rx="2"/><rect class="l0" x="572" y="65" width="10" height="10" rx="2"/><rect class="l4" x="572" y="78" width="10" height="10" rx="2"/><rect class="l2" x="585" y="0" width="10" height="10" rx="2"/><rect class="l0" x="585" y="13" width="10" height="10" rx="2"/><rect class="l0" x="585" y="26" width="10" height="10" rx="2"/><rect class="l0" x="585" y="39" width="10" height="10" rx="2"/><rect class="l0" x="585" y="52" width="10" height="10" rx="2"/><rect class="l0" x="585" y="65" width="10" height="10" rx="2"/><rect class="l1" x="585" y="78" width="10" height="10" rx="2"/><rect class="l4" x="598" y="0" width="10" height="10" rx="2"/><rect class="l0" x="598" y="13" width="10" height="10" rx="2"/><rect class="l0" x="598" y="26" width="10" height="10" rx="2"/><rect class="l0" x="598" y="39" width="10" height="10" rx="2"/><rect class="l0" x="598" y="52" width="10" height="10" rx="2"/><rect class="l0" x="598" y="65" width="10" height="10" rx="2"/><rect class="l0" x="598" y="78" width="10" height="10" rx="2"/><rect class="l0" x="611" y="0" width="10" height="10" rx="2"/><rect class="l0" x="611" y="13" width="10" height="10" rx="2"/><rect class="l0" x="611" y="26" width="10" height="10" rx="2"/><rect class="l0" x="611" y="39" width="10" height="10" rx="2"/><rect class="l0" x="611" y="52" width="10" height="10" rx="2"/><rect class="l0" x="611" y="65" width="10" height="10" rx="2"/><rect class="l0" x="611" y="78" width="10" height="10" rx="2"/><rect class="l0" x="624" y="0" width="10" height="10" rx="2"/><rect class="l0" x="624" y="13" width="10" height="10" rx="2"/><rect class="l0" x="624" y="26" width="10" height="10" rx="2"/><rect class="l0" x="624" y="39" width="10" height="10" rx="2"/><rect class="l0" x="624" y="52" width="10" height="10" rx="2"/><rect class="l0" x="624" y="65" width="10" height="10" rx="2"/><rect class="l0" x="624" y="78" width="10" height="10" rx="2"/><rect class="l0" x="637" y="0" width="10" height="10" rx="2"/><rect class="l0" x="637" y="13" width="10" height="10" rx="2"/><rect class="l0" x="637" y="26" width="10" height="10" rx="2"/><rect class="l0" x="637" y="39" width="10" height="10" rx="2"/><rect class="l0" x="637" y="52" width="10" height="10" rx="2"/><rect class="l0" x="637" y="65" width="10" height="10" rx="2"/><rect class="l0" x="637" y="78" width="10" height="10" rx="2"/><rect class="l0" x="650" y="0" width="10" height="10" rx="2"/><rect class="l0" x="650" y="13" width="10" height="10" rx="2"/><rect class="l0" x="650" y="26" width="10" height="10" rx="2"/><rect class="l0" x="650" y="39" width="10" height="10" rx="2"/><rect class="l0" x="650" y="52" width="10" height="10" rx="2"/><rect class="l0" x="650" y="65" width="10" height="10" rx="2"/><rect class="l0" x="650" y="78" width="10" height="10" rx="2"/><rect class="l0" x="663" y="0" width="10" height="10" rx="2"/><rect class="l0" x="663" y="13" width="10" height="10" rx="2"/><rect class="l0" x="663" y="26" width="10" height="10" rx="2"/><rect class="l0" x="663" y="39" width="10" height="10" rx="2"/><rect class="l0" x="663" y="52" width="10" height="10" rx="2"/><rect class="l0" x="663" y="65" width="10" height="10" rx="2"/><rect class="l0" x="663" y="78" width="10" height="10" rx="2"/><rect class="l0" x="676" y="0" width="10" height="10" rx="2"/><rect class="l0" x="676" y="13" width="10" height="10" rx="2"/><rect class="l0" x="676" y="26" width="10" height="10" rx="2"/><rect class="l0" x="676" y="39" width="10" height="10" rx="2"/></svg>
+              <div class="gh-legend" aria-hidden="true"><span>Less</span><i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><span>More</span></div>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div><b>6+</b><span>Projects built</span></div>
+            <div><b>2</b><span>Clients served</span></div>
+            <div><b>−12</b><span>months to my 1-year work experience goal</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS
+           Text: src/content/skills.json. Each card's "area" places it in the grid and picks its illustration below.
+           Illustrations loop with transform/opacity only; the plain (un-animated) state is the finished picture. -->
+      <section class="sec skills" id="skills">
+        <div class="wrap">
+          <div class="sec-head">
+            <div>
+              <p class="eyebrow">Skills</p>
+              <h2>What I can do <em>for you</em></h2>
+              
+            </div>
+          </div>
+
+          <div class="bento">
+            <article class="sk glass sk-web" style="--i:0">
+              <span class="sk-glow" aria-hidden="true"></span>
+              <h3>Websites that are fast and safe</h3>
+              <p class="tx">I build websites from a simple one-page site to a full system, and I make sure each person only sees what they’re allowed to see (login and access control). I use AI to build faster, then check the result before it goes live.</p>
+              <div class="sk-vis" aria-hidden="true">
+                <svg class="ill ill-web" viewBox="0 0 320 200">
+                  <rect class="i-card" x="10" y="10" width="300" height="180" rx="14"/>
+                  <path class="i-rule" d="M10 40h300"/>
+                  <circle class="i-dot" cx="30" cy="25" r="4.5"/><circle class="i-dot" cx="46" cy="25" r="4.5"/><circle class="i-dot" cx="62" cy="25" r="4.5"/>
+                  <rect class="i-head a" style="--d:0s" x="32" y="58" width="120" height="12" rx="6"/>
+                  <rect class="i-line a" style="--d:.35s" x="32" y="82" width="190" height="8" rx="4"/>
+                  <rect class="i-line a" style="--d:.55s" x="32" y="98" width="150" height="8" rx="4"/>
+                  <rect class="i-tile a" style="--d:.8s" x="32" y="124" width="76" height="46" rx="8"/>
+                  <rect class="i-tile a" style="--d:1s" x="118" y="124" width="76" height="46" rx="8"/>
+                  <rect class="i-tile a" style="--d:1.2s" x="204" y="124" width="76" height="46" rx="8"/>
+                  <g class="lock">
+                    <circle class="i-acc" cx="268" cy="72" r="24"/>
+                    <rect class="i-glyph" x="258" y="71" width="20" height="15" rx="3"/>
+                    <path class="i-glyph-s" d="M262 71v-4.5a6 6 0 0 1 12 0V71"/>
+                  </g>
+                </svg>
+              </div>
+              <ul class="chips"><li>Next.js</li><li>Vercel</li><li>Supabase</li><li>Tailwind</li><li>Typescript</li><li>PHP</li></ul>
+            </article>
+            <article class="sk glass sk-prob" style="--i:1">
+              <span class="sk-glow" aria-hidden="true"></span>
+              <h3>Understanding your problem first</h3>
+              <p class="tx">One client came asking for a simple cashier app. After talking it through, we found what they really needed: tracking stock, income, member accounts, and sales statistics. I help people figure out what they actually need before building anything.</p>
+              <div class="sk-vis" aria-hidden="true">
+                <svg class="ill ill-prob" viewBox="0 0 240 150">
+                  <g class="b1"><rect class="i-card" x="14" y="16" width="132" height="42" rx="15"/><rect class="i-line" x="30" y="29" width="92" height="7" rx="3.5"/><rect class="i-line" x="30" y="41" width="58" height="7" rx="3.5"/></g>
+                  <g class="b2"><rect class="i-bubble" x="94" y="72" width="132" height="42" rx="15"/><rect class="i-line-inv" x="110" y="85" width="96" height="7" rx="3.5"/><rect class="i-line-inv" x="110" y="97" width="66" height="7" rx="3.5"/></g>
+                  <g class="row" style="--d:0s"><rect class="i-box" x="44" y="14" width="20" height="20" rx="6"/><path class="i-check ck" style="--d:0s" d="M49 24l4 4 7-8"/><rect class="i-line" x="76" y="20.5" width="110" height="7" rx="3.5"/></g>
+                  <g class="row" style="--d:.3s"><rect class="i-box" x="44" y="46" width="20" height="20" rx="6"/><path class="i-check ck" style="--d:.3s" d="M49 56l4 4 7-8"/><rect class="i-line" x="76" y="52.5" width="86" height="7" rx="3.5"/></g>
+                  <g class="row" style="--d:.6s"><rect class="i-box" x="44" y="78" width="20" height="20" rx="6"/><path class="i-check ck" style="--d:.6s" d="M49 88l4 4 7-8"/><rect class="i-line" x="76" y="84.5" width="120" height="7" rx="3.5"/></g>
+                  <g class="row" style="--d:.9s"><rect class="i-box" x="44" y="110" width="20" height="20" rx="6"/><path class="i-check ck" style="--d:.9s" d="M49 120l4 4 7-8"/><rect class="i-line" x="76" y="116.5" width="96" height="7" rx="3.5"/></g>
+                </svg>
+              </div>
+              <ul class="chips"><li>Business Analysis</li><li>Problem Solver</li></ul>
+            </article>
+            <article class="sk glass sk-data" style="--i:2">
+              <span class="sk-glow" aria-hidden="true"></span>
+              <h3>Tidy, reliable data</h3>
+              <p class="tx">I plan where information lives and how it moves, so it stays easy to find and hard to lose.</p>
+              <div class="sk-vis" aria-hidden="true">
+                <svg class="ill ill-data" viewBox="0 0 240 150">
+                  <rect class="i-card" x="20" y="10" width="200" height="130" rx="12"/>
+                  <rect class="i-head" x="34" y="22" width="40" height="8" rx="4"/><rect class="i-head" x="98" y="22" width="56" height="8" rx="4"/><rect class="i-head" x="178" y="22" width="28" height="8" rx="4"/>
+                  <path class="i-rule" d="M20 40h200"/>
+                  <g class="r" style="--x:16px;--y:0px"><rect class="i-acc" x="34" y="52" width="28" height="8" rx="4"/><rect class="i-line" x="98" y="52" width="64" height="8" rx="4"/><rect class="i-line" x="178" y="52" width="20" height="8" rx="4"/></g>
+                  <g class="r" style="--x:-20px;--y:24px"><rect class="i-acc" x="34" y="76" width="28" height="8" rx="4"/><rect class="i-line" x="98" y="76" width="48" height="8" rx="4"/><rect class="i-line" x="178" y="76" width="24" height="8" rx="4"/></g>
+                  <g class="r" style="--x:12px;--y:-24px"><rect class="i-acc" x="34" y="100" width="28" height="8" rx="4"/><rect class="i-line" x="98" y="100" width="70" height="8" rx="4"/><rect class="i-line" x="178" y="100" width="16" height="8" rx="4"/></g>
+                  <g class="r" style="--x:-10px;--y:0px"><rect class="i-acc" x="34" y="124" width="28" height="8" rx="4"/><rect class="i-line" x="98" y="124" width="56" height="8" rx="4"/><rect class="i-line" x="178" y="124" width="22" height="8" rx="4"/></g>
+                </svg>
+              </div>
+              <ul class="chips"><li>MySQL</li><li>ERD</li><li>DFD</li></ul>
+            </article>
+            <article class="sk glass sk-paper" style="--i:3">
+              <span class="sk-glow" aria-hidden="true"></span>
+              <h3>Neat paperwork, done right</h3>
+              <p class="tx">I write clean letters, proposals, and reports, and organize data in spreadsheets, so the paperwork side of a project never becomes a headache. I’m comfortable with the everyday office and design tools.</p>
+              <div class="sk-vis" aria-hidden="true">
+                <svg class="ill ill-paper" viewBox="0 0 240 150">
+                  <g class="sh" style="--r:-5deg;--d:0s"><rect class="i-sheet" x="74" y="18" width="92" height="118" rx="8"/><rect class="i-line" x="88" y="34" width="50" height="6" rx="3"/><rect class="i-line" x="88" y="48" width="64" height="6" rx="3"/></g>
+                  <g class="sh" style="--r:4deg;--d:.6s"><rect class="i-sheet" x="74" y="16" width="92" height="118" rx="8"/><rect class="i-line" x="88" y="32" width="58" height="6" rx="3"/><rect class="i-line" x="88" y="46" width="44" height="6" rx="3"/></g>
+                  <g class="sh" style="--r:-1.5deg;--d:1.2s"><rect class="i-sheet" x="74" y="14" width="92" height="118" rx="8"/><rect class="i-line" x="88" y="30" width="46" height="6" rx="3"/><rect class="i-line" x="88" y="44" width="62" height="6" rx="3"/></g>
+                  <g class="sh" style="--r:0deg;--d:1.8s"><rect class="i-sheet" x="74" y="12" width="92" height="118" rx="8"/><rect class="i-head" x="88" y="26" width="40" height="8" rx="4"/><rect class="i-line" x="88" y="44" width="64" height="6" rx="3"/><rect class="i-line" x="88" y="56" width="56" height="6" rx="3"/><rect class="i-line" x="88" y="68" width="62" height="6" rx="3"/><rect class="i-acc" x="88" y="104" width="30" height="10" rx="5"/></g>
+                </svg>
+              </div>
+              <ul class="chips"><li>Google Docs</li><li>Google Sheets</li><li>Canva</li></ul>
+            </article>
+            <article class="sk glass sk-eng" style="--i:4">
+              <span class="sk-glow" aria-hidden="true"></span>
+              <h3>Comfortable in English</h3>
+              <p class="tx">I can chat with people and read technical documentation in English, so working with international teams or new tools doesn’t slow me down. Sharpened in Kampung Inggris, Pare.</p>
+              <div class="sk-vis" aria-hidden="true">
+                <svg class="ill ill-eng" viewBox="0 0 240 150">
+                  <g class="bob">
+                    <path class="i-card" d="M58 22h124a18 18 0 0 1 18 18v44a18 18 0 0 1-18 18H96l-24 20 4-20H58a18 18 0 0 1-18-18V40a18 18 0 0 1 18-18z"/>
+                    <text class="i-word halo" x="120" y="74" text-anchor="middle">Halo</text>
+                    <text class="i-word hello" x="120" y="74" text-anchor="middle">Hello</text>
+                  </g>
+                </svg>
+              </div>
+              <ul class="chips"><li>Speaking</li><li>Reading</li><li>Writing</li><li>Listening</li></ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS
+           Data: src/content/projects.json (the first 3 with "featured": true). Header: src/content/projectsPage.json → home. -->
+      <section class="sec" id="projects">
+        <div class="wrap">
+          <div class="sec-head">
+            <div>
+              <p class="eyebrow">Projects</p>
+              <h2>Things I've <em>built</em></h2>
+              
+            </div>
+            
+          </div>
+
+          <div class="pj-grid">
+            <article class="pj glass" data-type="Website">
+              <div class="pj-media">
+                <img src="/projects/orbidu.webp" alt="ORBIDU (On Progress)" width="1200" height="750" loading="lazy" decoding="async">
+                <span class="pj-badge">Website</span>
+              </div>
+              <div class="pj-body">
+                <h3>ORBIDU (On Progress)</h3>
+                <p class="pj-desc" title="Matches high schoolers&#x27; grades to college majors and helps them prepare for SNBP, SNBT, TKA, and civil-service schools.">Matches high schoolers&#x27; grades to college majors and helps them prepare for SNBP, SNBT, TKA, and civil-service schools.</p>
+                <ul class="chips"><li>TypeScript</li><li>Next.js</li><li>Tailwind CSS</li><li>Cloudflare Pages</li></ul>
+                <div class="pj-actions">
+                  
+                  <a class="pj-btn pj-main" href="https://orbidu.pages.dev/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4.5A1.5 1.5 0 0 1 16.5 20h-11A1.5 1.5 0 0 1 4 18.5v-11A1.5 1.5 0 0 1 5.5 6H10"/></svg>View</a>
+                </div>
+              </div>
+            </article>
+            <article class="pj glass" data-type="Website">
+              <div class="pj-media">
+                <img src="/projects/jurnalistik.webp" alt="Jurnalistik UIN Raden Fatah (On Progress)" width="1200" height="750" loading="lazy" decoding="async">
+                <span class="pj-badge">Website</span>
+              </div>
+              <div class="pj-body">
+                <h3>Jurnalistik UIN Raden Fatah (On Progress)</h3>
+                <p class="pj-desc" title="The official website for a journalism study program, introducing its lecturers, services, and news to future students.">The official website for a journalism study program, introducing its lecturers, services, and news to future students.</p>
+                <ul class="chips"><li>TypeScript</li><li>Next.js</li><li>shadcn/ui</li></ul>
+              </div>
+            </article>
+            <article class="pj glass" data-type="Website">
+              <div class="pj-media">
+                <img src="/projects/captgrill.webp" alt="CaptGrill" width="1200" height="750" loading="lazy" decoding="async">
+                <span class="pj-badge">Website</span>
+              </div>
+              <div class="pj-body">
+                <h3>CaptGrill</h3>
+                <p class="pj-desc" title="A cashier system for a kebab shop where every sale automatically deducts ingredients from stock, plus staff attendance and a live dashboard.">A cashier system for a kebab shop where every sale automatically deducts ingredients from stock, plus staff attendance and a live dashboard.</p>
+                <ul class="chips"><li>Javascript</li><li>Express</li><li>Tailwind CSS</li><li>Vercel</li></ul>
+                <div class="pj-actions">
+                  
+                  <a class="pj-btn pj-main" href="https://captgrill.vercel.app/login" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4.5A1.5 1.5 0 0 1 16.5 20h-11A1.5 1.5 0 0 1 4 18.5v-11A1.5 1.5 0 0 1 5.5 6H10"/></svg>View</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- OFF THE CLOCK
+           Text: src/content/personal.json. Song covers/titles: src/content/spotify.json (Spotify oEmbed, refreshed at build).
+           The 3D scene (src/offclock3d.js, three.js) and the Spotify player load only when this section nears the screen. -->
+
+
+
+
+
+
+
+      <section class="sec offclock" id="offclock">
+        <div class="wrap">
+          <div class="sec-head">
+            <div>
+              <p class="eyebrow">Bonus</p>
+              <h2>A little more <em>about me</em></h2>
+              
+            </div>
+          </div>
+
+          <div class="oc-grid">
+            <div class="oc-center">
+              <div class="oc-stage" id="ocStage">
+                <canvas id="ocCanvas" role="img" aria-label="3D model of Maulana Adiatma sleeping on a cloud. Drag to rotate."></canvas>
+                <img class="oc-fallback" src="/avatar.webp" alt="Illustrated portrait of Maulana Adiatma" hidden>
+                <p class="oc-loading" aria-hidden="true">Loading 3D…</p>
+              </div>
+              <p class="oc-quote">“Be yourself and never surrender.”</p>
+              <p class="oc-intro">An ambivert who recharges alone but can talk for hours once we click, and knows when to stop. I collect bottles of chili sauce, take solo walks to clear my head, and dream of working remotely from a cold mountain town someday.</p>
+              <ul class="chips oc-someday"><li>Travel abroad</li><li>Work remotely</li><li>Live somewhere cold & green</li></ul>
+            </div>
+
+            <article class="oc-card glass oc-hob">
+              <h3 class="oc-label">Hobbies</h3>
+              <ul class="oc-list">
+                <li><span class="oc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5z"/><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 7.5h6"/></svg></span>Comics & novels</li>
+                <li><span class="oc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7.5 10.5v4M5.5 12.5h4"/><path d="M15.5 11.5h.01M17.5 13.5h.01"/></svg></span>Gaming</li>
+                <li><span class="oc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 6.5a14 14 0 0 1 7 0l1 .3c1.7 2.6 2.7 5.6 2.8 8.9-1.4 1.2-3 2-4.6 2.3l-.9-1.6"/><path d="M15.5 6.5M8.5 6.5l-1 .3C5.8 9.4 4.8 12.4 4.7 15.7c1.4 1.2 3 2 4.6 2.3l.9-1.6"/><path d="M8.3 15.3c2.4 1 5 1 7.4 0"/><path d="M9.5 12h.01M14.5 12h.01"/></svg></span>Hanging out on Discord</li>
+                <li><span class="oc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="15" cy="4.5" r="1.8"/><path d="M6.5 11l3.5-3.2 3.8 1.2 2.4 3.3 3 .7"/><path d="M13.8 9l-2.3 5 3.3 2.2-1 4.3"/><path d="M11.5 14l-2.2 3.3-4.3.7"/></svg></span>Jogging</li>
+              </ul>
+            </article>
+
+            <article class="oc-card glass oc-food">
+              <h3 class="oc-label">Comfort food</h3>
+              <ul class="oc-list">
+                <li><span class="oc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8.5C5 5.5 8.1 3 12 3s7 2.5 7 5.5L12 21z"/><path d="M7.5 9.5h9M9 13h6"/></svg></span>Kebab</li>
+                <li><span class="oc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12c3-4.5 9-6 14-2.5L21 7v10l-4-2.5C12 18 6 16.5 3 12z"/><path d="M8 11.5h.01"/></svg></span>Pempek with Rice</li>
+                <li><span class="oc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11.5h17a8.5 8.5 0 0 1-17 0z"/><path d="M13.5 3 10 11.5M19 4l-6 7.5"/><path d="M7 11.5c0-1.8 1-2.8 2-2.8s1.2 1 2.2 1"/></svg></span>Fried Noodles</li>
+              </ul>
+            </article>
+
+            <article class="oc-card glass oc-play">
+              <h3 class="oc-label">On repeat</h3>
+              <ol class="oc-tracks">
+                <li><button type="button" class="oc-track on" data-uri="spotify:track:235CN2O18gDmTm8fRdbhyB" data-id="235CN2O18gDmTm8fRdbhyB" data-title="Shape of My Heart" data-artist="Backstreet Boys" aria-current="true">
+                  <span class="oc-cover"><img src="https://i.scdn.co/image/ab67616d00001e02c2f0d820b1113f9a243fb973" alt="" width="64" height="64" loading="lazy" decoding="async"></span>
+                  <span class="oc-meta"><b>Shape of My Heart</b><small>Backstreet Boys</small></span>
+                  <span class="oc-eq" aria-hidden="true"><i></i><i></i><i></i></span>
+                </button></li>
+                <li><button type="button" class="oc-track" data-uri="spotify:track:1sVQuuvFDKu6vklPVeiUXT" data-id="1sVQuuvFDKu6vklPVeiUXT" data-title="Dunia Yang Nanti" data-artist="Raim Laode" aria-current="false">
+                  <span class="oc-cover"><img src="https://i.scdn.co/image/ab67616d00001e02a9d1f9b5d3275b0625e13e79" alt="" width="64" height="64" loading="lazy" decoding="async"></span>
+                  <span class="oc-meta"><b>Dunia Yang Nanti</b><small>Raim Laode</small></span>
+                  <span class="oc-eq" aria-hidden="true"><i></i><i></i><i></i></span>
+                </button></li>
+                <li><button type="button" class="oc-track" data-uri="spotify:track:52m690jqpxP1tHHkRNdl5p" data-id="52m690jqpxP1tHHkRNdl5p" data-title="Titik Nadir (feat. Monita Tahalea)" data-artist="Kahitna, Monita Tahalea" aria-current="false">
+                  <span class="oc-cover"><img src="https://i.scdn.co/image/ab67616d00001e025cfcb24701901b0e53ce4fae" alt="" width="64" height="64" loading="lazy" decoding="async"></span>
+                  <span class="oc-meta"><b>Titik Nadir (feat. Monita Tahalea)</b><small>Kahitna, Monita Tahalea</small></span>
+                  <span class="oc-eq" aria-hidden="true"><i></i><i></i><i></i></span>
+                </button></li>
+                <li><button type="button" class="oc-track" data-uri="spotify:track:6xAIVrhyFQaHwPVWfUvWvE" data-id="6xAIVrhyFQaHwPVWfUvWvE" data-title="spiral" data-artist="LONGMAN" aria-current="false">
+                  <span class="oc-cover"><img src="https://i.scdn.co/image/ab67616d00001e0232d2b6de4582ece392ee6bdc" alt="" width="64" height="64" loading="lazy" decoding="async"></span>
+                  <span class="oc-meta"><b>spiral</b><small>LONGMAN</small></span>
+                  <span class="oc-eq" aria-hidden="true"><i></i><i></i><i></i></span>
+                </button></li>
+                <li><button type="button" class="oc-track" data-uri="spotify:track:0V82wcNlunw76nvvmPL9tk" data-id="0V82wcNlunw76nvvmPL9tk" data-title="I Lay My Love on You - Remix" data-artist="Westlife" aria-current="false">
+                  <span class="oc-cover"><img src="https://i.scdn.co/image/ab67616d00001e0215f19e3b1fbfc5a2f164fb6a" alt="" width="64" height="64" loading="lazy" decoding="async"></span>
+                  <span class="oc-meta"><b>I Lay My Love on You - Remix</b><small>Westlife</small></span>
+                  <span class="oc-eq" aria-hidden="true"><i></i><i></i><i></i></span>
+                </button></li>
+              </ol>
+            </article>
+
+            <article class="oc-card glass oc-now" id="ocNow">
+              <h3 class="oc-label">Now playing</h3>
+              <p class="oc-now-title" id="ocNowTitle">Shape of My Heart</p>
+              <p class="oc-now-artist" id="ocNowArtist">Backstreet Boys</p>
+              <div class="oc-wave" aria-hidden="true"><i style="--h:0.28;--d:0s"></i><i style="--h:0.83;--d:-0.137s"></i><i style="--h:0.38;--d:-0.274s"></i><i style="--h:0.41;--d:-0.411s"></i><i style="--h:0.35;--d:-0.548s"></i><i style="--h:0.59;--d:-0.685s"></i><i style="--h:0.67;--d:-0.822s"></i><i style="--h:0.66;--d:-0.059s"></i><i style="--h:0.76;--d:-0.196s"></i><i style="--h:0.43;--d:-0.333s"></i><i style="--h:0.41;--d:-0.47s"></i><i style="--h:0.30;--d:-0.607s"></i><i style="--h:0.67;--d:-0.744s"></i><i style="--h:0.34;--d:-0.881s"></i><i style="--h:0.88;--d:-0.118s"></i><i style="--h:0.48;--d:-0.255s"></i><i style="--h:0.61;--d:-0.392s"></i><i style="--h:0.35;--d:-0.529s"></i><i style="--h:0.39;--d:-0.666s"></i><i style="--h:0.59;--d:-0.803s"></i><i style="--h:0.58;--d:-0.04s"></i><i style="--h:0.84;--d:-0.177s"></i><i style="--h:0.44;--d:-0.314s"></i><i style="--h:0.65;--d:-0.451s"></i><i style="--h:0.28;--d:-0.588s"></i><i style="--h:0.44;--d:-0.725s"></i><i style="--h:0.37;--d:-0.862s"></i><i style="--h:0.81;--d:-0.099s"></i><i style="--h:0.56;--d:-0.236s"></i><i style="--h:0.73;--d:-0.373s"></i><i style="--h:0.53;--d:-0.51s"></i><i style="--h:0.35;--d:-0.647s"></i><i style="--h:0.41;--d:-0.784s"></i><i style="--h:0.46;--d:-0.021s"></i></div>
+              <div class="oc-ctrl">
+                <button type="button" class="oc-btn" id="ocPrev" aria-label="Previous song"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5.5h2v13H7zM19 6.2v11.6a.8.8 0 0 1-1.2.7L10 12.7a.8.8 0 0 1 0-1.4l7.8-5.8a.8.8 0 0 1 1.2.7z"/></svg></button>
+                <button type="button" class="oc-btn oc-main" id="ocPlay" aria-label="Play"><svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.6v12.8a.9.9 0 0 0 1.4.8l10-6.4a.9.9 0 0 0 0-1.6l-10-6.4A.9.9 0 0 0 8 5.6z"/></svg><svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6.5" y="5" width="4" height="14" rx="1.2"/><rect x="13.5" y="5" width="4" height="14" rx="1.2"/></svg></button>
+                <button type="button" class="oc-btn" id="ocNext" aria-label="Next song"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15 5.5h2v13h-2zM5 6.2v11.6a.8.8 0 0 0 1.2.7l7.8-5.8a.8.8 0 0 0 0-1.4L6.2 5.5A.8.8 0 0 0 5 6.2z"/></svg></button>
+              </div>
+              <p class="oc-note">Full songs for Spotify users · previews otherwise · <a id="ocOpen" href="https://open.spotify.com/track/235CN2O18gDmTm8fRdbhyB" target="_blank" rel="noopener">Open in Spotify</a></p>
+              <p class="oc-hint">Your browser wants you to press play on Spotify’s own player:</p>
+              <div class="oc-embed" id="ocEmbedBox" inert><div id="ocEmbed"></div></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="contact" id="contact">
+        <div class="contact-card glass">
+          <p class="eyebrow">Contact</p>
+          <h2>Think we'd work well together? <em>Let's talk.</em></h2>
+          <p>Have a problem to solve, a project to build together, or an idea that needs the right tech? Hiring for a job or internship? I'm always open to a message.</p>
+          <ul class="chips ct-reasons" aria-label="Good reasons to reach out"><li>Solve a problem</li><li>Build a project</li><li>Share an idea</li><li>Job or internship</li></ul>
+          <div class="mail"><code id="mailText">maulanaadiatma3133@gmail.com</code><button type="button" id="copyBtn">Copy</button></div>
+          <div class="ct-social"><a class="soc-ic has-tip" href="https://www.linkedin.com/in/maulanaadiatma/" target="_blank" rel="noopener" aria-label="LinkedIn" data-tip="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+<a class="soc-ic has-tip" href="https://www.instagram.com/adiatma__23/" target="_blank" rel="noopener" aria-label="Instagram" data-tip="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.4 6.6h.01"/></svg></a>
+<a class="soc-ic has-tip" href="https://www.threads.com/@adiatma__23" target="_blank" rel="noopener" aria-label="Threads" data-tip="Threads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.6 8.4C16.7 5.6 14.6 4 11.9 4 7.6 4 5 7.2 5 12s2.6 8 6.9 8c3.6 0 6.1-2 6.1-4.9 0-2.6-2-4.2-5-4.2-2.4 0-4 1.2-4 2.8 0 1.5 1.3 2.6 3.1 2.6 2.5 0 3.9-1.9 3.9-5 0-.8-.1-1.5-.3-2.2"/></svg></a>
+<a class="soc-ic has-tip" href="https://github.com/mauinGit" target="_blank" rel="noopener" aria-label="GitHub" data-tip="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+</div>
+        </div>
+        <footer>
+          <span>© 2026 Maulana Adiatma · <button class="replay" id="replayIntro" type="button">Replay intro</button></span>
+        </footer>
+      </section>
+
+
+    </div>
+  </div>
+  <canvas id="visit" aria-hidden="true"></canvas>
+</div>
+</body>
+</html>
