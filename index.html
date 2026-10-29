@@ -164,7 +164,7 @@
                   <span style="width: 7px; height: 7px; border-radius: 50%; background: #FCC624; box-shadow: 0 0 6px #FCC624;"></span> Linux Ecosystem
                 </span>
               </div>
-              <p style="margin-top: 16px; font-family: var(--f-mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.03em;">✦ Move cursor or drag to rotate in 3D · Auto-rotates smoothly</p>
+              <p style="margin-top: 16px; font-family: var(--f-mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.03em;">✦ Click &amp; hold to pause · Drag cursor to rotate in 3D · Auto-rotates smoothly</p>
             </div>
             <div style="display: flex; justify-content: center; align-items: center; min-height: 380px; position: relative; overflow: hidden;">
               <canvas id="skillGlobe" style="width: 100%; max-width: 440px; aspect-ratio: 1/1; cursor: grab; display: block; touch-action: none;"></canvas>
@@ -559,40 +559,96 @@
       });
     }
 
-    let rx = 0.0011, ry = 0.0016;
-    let targetRx = 0.0011, targetRy = 0.0016;
+    // Rotation state & inertia physics for mouse hold & drag
+    const ambientRotX = 0.0006;
+    const ambientRotY = 0.0014;
+    let vx = ambientRotX;
+    let vy = ambientRotY;
+    let isHolding = false;
+    let lastX = 0;
+    let lastY = 0;
+    let hoverBiasX = 0;
+    let hoverBiasY = 0;
 
-    function handlePointerMove(clientX, clientY) {
-      const rect = canvas.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const dx = clientX - cx;
-      const dy = clientY - cy;
-      targetRy = (dx / (rect.width / 2)) * 0.016;
-      targetRx = -(dy / (rect.height / 2)) * 0.016;
+    function rotateItems(rotX, rotY) {
+      if (Math.abs(rotX) < 0.000001 && Math.abs(rotY) < 0.000001) return;
+      const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+      const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        // Rotate around Y axis (horizontal yaw)
+        const x1 = item.x * cosY - item.z * sinY;
+        const z1 = item.z * cosY + item.x * sinY;
+
+        // Rotate around X axis (vertical pitch)
+        const y2 = item.y * cosX - z1 * sinX;
+        const z2 = z1 * cosX + item.y * sinX;
+
+        item.x = x1;
+        item.y = y2;
+        item.z = z2;
+      }
     }
 
-    canvas.addEventListener("mousemove", (e) => {
-      handlePointerMove(e.clientX, e.clientY);
+    // Pointer Events for robust cross-platform mouse + touch drag & hold
+    canvas.addEventListener("pointerdown", (e) => {
+      isHolding = true;
+      canvas.style.cursor = "grabbing";
+      try { canvas.setPointerCapture(e.pointerId); } catch(err) {}
+      lastX = e.clientX;
+      lastY = e.clientY;
+      vx = 0;
+      vy = 0;
     });
+
+    canvas.addEventListener("pointermove", (e) => {
+      const rect = canvas.getBoundingClientRect();
+      if (isHolding) {
+        const dx = e.clientX - lastX;
+        const dy = e.clientY - lastY;
+        lastX = e.clientX;
+        lastY = e.clientY;
+
+        // Direct rotation following cursor drag
+        const deltaRy = dx * 0.0065;
+        const deltaRx = -dy * 0.0065;
+        rotateItems(deltaRx, deltaRy);
+
+        // Store instantaneous velocity for smooth release momentum
+        vx = deltaRx;
+        vy = deltaRy;
+      } else {
+        // Subtle hover steering when cursor moves over globe without holding
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const offX = e.clientX - cx;
+        const offY = e.clientY - cy;
+        hoverBiasY = (offX / (rect.width / 2)) * 0.003;
+        hoverBiasX = -(offY / (rect.height / 2)) * 0.003;
+      }
+    });
+
+    function releaseHold(e) {
+      if (!isHolding) return;
+      isHolding = false;
+      canvas.style.cursor = "grab";
+      if (e && e.pointerId) {
+        try { canvas.releasePointerCapture(e.pointerId); } catch(err) {}
+      }
+    }
+
+    canvas.addEventListener("pointerup", releaseHold);
+    canvas.addEventListener("pointercancel", releaseHold);
+    window.addEventListener("pointerup", releaseHold);
 
     canvas.addEventListener("mouseleave", () => {
-      targetRx = 0.0011;
-      targetRy = 0.0016;
+      hoverBiasX = 0;
+      hoverBiasY = 0;
     });
 
-    canvas.addEventListener("touchstart", (e) => {}, { passive: true });
-
-    canvas.addEventListener("touchmove", (e) => {
-      if (e.touches.length > 0) {
-        handlePointerMove(e.touches[0].clientX, e.touches[0].clientY);
-      }
-    }, { passive: true });
-
-    canvas.addEventListener("touchend", () => {
-      targetRx = 0.0011;
-      targetRy = 0.0016;
-    });
+    // Prevent default touch gestures (scrolling) while dragging on the canvas
+    canvas.addEventListener("touchstart", (e) => e.preventDefault(), { passive: false });
+    canvas.addEventListener("touchmove", (e) => e.preventDefault(), { passive: false });
 
     let displayW = 420, displayH = 420;
     function resize() {
@@ -895,28 +951,17 @@
       if (displayW <= 0 || displayH <= 0) resize();
       ctx.clearRect(0, 0, displayW, displayH);
 
-      // Smooth inertia rotation (calm & steady pace)
-      rx += (targetRx - rx) * 0.06;
-      ry += (targetRy - ry) * 0.06;
+      if (!isHolding) {
+        // Decay drag velocity smoothly towards serene ambient rotation + hover bias
+        const targetVy = ambientRotY + hoverBiasY;
+        const targetVx = ambientRotX + hoverBiasX;
+        vx = vx * 0.92 + targetVx * 0.08;
+        vy = vy * 0.92 + targetVy * 0.08;
 
-      const cosX = Math.cos(rx), sinX = Math.sin(rx);
-      const cosY = Math.cos(ry), sinY = Math.sin(ry);
+        rotateItems(vx, vy);
+      }
+      // When isHolding is true, the globe stays held in place ("ditahan dengan mouse")
 
-      items.forEach(item => {
-        // Y-axis rotation
-        const x1 = item.x * cosY - item.z * sinY;
-        const z1 = item.z * cosY + item.x * sinY;
-
-        // X-axis rotation
-        const y2 = item.y * cosX - z1 * sinX;
-        const z2 = z1 * cosX + item.y * sinX;
-
-        item.x = x1;
-        item.y = y2;
-        item.z = z2;
-      });
-
-      // Sort back to front (painters algorithm)
       const sorted = [...items].sort((a, b) => a.z - b.z);
 
       const isNight = document.documentElement.getAttribute("data-mode") === "night";
