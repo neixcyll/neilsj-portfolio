@@ -158,10 +158,10 @@
               <p class="tx" style="max-width: 46ch; margin-bottom: 18px; font-size: 15.5px; line-height: 1.6;">An auto-rotating spatial cloud of technologies I work with daily — integrating high-throughput full-stack web applications with autonomous robotics, sensors, and embedded microcontroller firmware.</p>
               <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                 <span style="background: var(--chip); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-family: var(--f-mono); font-size: 11.5px; display: inline-flex; align-items: center; gap: 8px; color: var(--ink);">
-                  <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--lupine); box-shadow: 0 0 8px var(--lupine);"></span> Software &amp; Full-Stack
+                  <span style="width: 6px; height: 6px; border-radius: 50%; background: currentColor;"></span> Software &amp; Full-Stack
                 </span>
                 <span style="background: var(--chip); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-family: var(--f-mono); font-size: 11.5px; display: inline-flex; align-items: center; gap: 8px; color: var(--ink);">
-                  <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--meadow); box-shadow: 0 0 8px var(--meadow);"></span> Robotics &amp; Hardware
+                  <span style="width: 6px; height: 6px; border-radius: 50%; border: 1.5px solid currentColor; box-sizing: border-box;"></span> Robotics &amp; Hardware
                 </span>
               </div>
               <p style="margin-top: 16px; font-family: var(--f-mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.03em;">✦ Move cursor or drag to rotate in 3D · Auto-rotates smoothly</p>
@@ -643,53 +643,51 @@
       const sorted = [...items].sort((a, b) => a.z - b.z);
 
       const isNight = document.documentElement.getAttribute("data-mode") === "night";
-      const accentHw = isNight ? "#c9ef6a" : "#729b15";
-      const accentSw = isNight ? "#b6a3ff" : "#7a62cf";
       const cx = displayW / 2;
       const cy = displayH / 2;
 
       sorted.forEach(item => {
         const scale = fov / (fov + item.z);
-        const alpha = Math.max(0.18, Math.min(1, (item.z + radius) / (2 * radius) * 0.82 + 0.18));
+        const alpha = Math.max(0.15, Math.min(1, (item.z + radius) / (2 * radius) * 0.85 + 0.15));
         const px = cx + item.x * scale;
         const py = cy + item.y * scale;
 
-        const fontSize = Math.max(10, Math.round(13 * scale));
+        const fontSize = Math.max(10.5, Math.round(13.5 * scale));
         ctx.font = `600 ${fontSize}px "JetBrains Mono", monospace`;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
 
         const textMetrics = ctx.measureText(item.text);
         const tw = textMetrics.width;
-        const padX = 7 * scale;
-        const padY = 3.5 * scale;
+        const padX = 8 * scale;
+        const padY = 4 * scale;
         const pillW = tw + padX * 2;
         const pillH = fontSize + padY * 2;
 
-        // Foreground pill badges (z > -30)
-        if (item.z > -35) {
+        // Clean, minimal monochrome glass badges for foreground tags
+        if (item.z > -40) {
+          // Glass pill background
           ctx.fillStyle = isNight 
-            ? `rgba(20, 24, 46, ${alpha * 0.78})`
-            : `rgba(255, 255, 255, ${alpha * 0.88})`;
+            ? `rgba(255, 255, 255, ${alpha * 0.08})`
+            : `rgba(255, 255, 255, ${alpha * 0.94})`;
           ctx.beginPath();
           ctx.roundRect(px - pillW / 2, py - pillH / 2, pillW, pillH, 999);
           ctx.fill();
 
-          ctx.strokeStyle = item.category === "hw"
-            ? `${accentHw}${Math.round(alpha * 170).toString(16).padStart(2, "0")}`
-            : `${accentSw}${Math.round(alpha * 170).toString(16).padStart(2, "0")}`;
-          ctx.lineWidth = 1;
+          // Subtle hairline border
+          ctx.strokeStyle = isNight
+            ? (item.z > 25 ? `rgba(255, 255, 255, ${alpha * 0.45})` : `rgba(255, 255, 255, ${alpha * 0.18})`)
+            : (item.z > 25 ? `rgba(0, 0, 0, ${alpha * 0.3})` : `rgba(0, 0, 0, ${alpha * 0.1})`);
+          ctx.lineWidth = item.z > 40 ? 1.4 : 1;
           ctx.stroke();
         }
 
-        // Tag text
-        const isFocus = item.z > 30;
-        if (isFocus) {
-          ctx.fillStyle = item.category === "hw" ? accentHw : accentSw;
+        // Pure monochrome text: high-contrast in front, subtle fading in back
+        const isFocus = item.z > 25;
+        if (isNight) {
+          ctx.fillStyle = isFocus ? "#ffffff" : `rgba(240, 243, 248, ${alpha * 0.75})`;
         } else {
-          ctx.fillStyle = isNight 
-            ? `rgba(238, 240, 246, ${alpha * 0.85})` 
-            : `rgba(27, 31, 23, ${alpha * 0.85})`;
+          ctx.fillStyle = isFocus ? "#111827" : `rgba(17, 24, 39, ${alpha * 0.75})`;
         }
 
         ctx.fillText(item.text, px, py);
