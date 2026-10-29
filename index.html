@@ -151,6 +151,26 @@
             </div>
           </div>
 
+          <div class="skill-globe-wrapper glass" style="margin-bottom: 24px; padding: clamp(20px, 4vw, 36px); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px; align-items: center; border-radius: 28px;">
+            <div class="sg-info">
+              <p class="eyebrow" style="margin-bottom: 8px;">Spatial Tech Ecosystem</p>
+              <h3 style="font-family: var(--f-display); font-size: clamp(30px, 3.4vw, 46px); line-height: 1.05; margin: 0 0 14px; letter-spacing: -0.015em;">3D Interactive <em>Skill Globe</em></h3>
+              <p class="tx" style="max-width: 46ch; margin-bottom: 18px; font-size: 15.5px; line-height: 1.6;">An auto-rotating spatial cloud of technologies I work with daily — integrating high-throughput full-stack web applications with autonomous robotics, sensors, and embedded microcontroller firmware.</p>
+              <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <span style="background: var(--chip); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-family: var(--f-mono); font-size: 11.5px; display: inline-flex; align-items: center; gap: 8px; color: var(--ink);">
+                  <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--lupine); box-shadow: 0 0 8px var(--lupine);"></span> Software &amp; Full-Stack
+                </span>
+                <span style="background: var(--chip); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-family: var(--f-mono); font-size: 11.5px; display: inline-flex; align-items: center; gap: 8px; color: var(--ink);">
+                  <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--meadow); box-shadow: 0 0 8px var(--meadow);"></span> Robotics &amp; Hardware
+                </span>
+              </div>
+              <p style="margin-top: 16px; font-family: var(--f-mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.03em;">✦ Move cursor or drag to rotate in 3D · Auto-rotates smoothly</p>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center; min-height: 380px; position: relative; overflow: hidden;">
+              <canvas id="skillGlobe" style="width: 100%; max-width: 440px; aspect-ratio: 1/1; cursor: grab; display: block; touch-action: none;"></canvas>
+            </div>
+          </div>
+
           <div class="bento">
             <article class="sk glass sk-web" style="--i:0">
               <span class="sk-glow" aria-hidden="true"></span>
@@ -468,5 +488,226 @@
   </div>
   <canvas id="visit" aria-hidden="true"></canvas>
 </div>
+
+<style>
+@media(max-width: 860px) {
+  .skill-globe-wrapper {
+    grid-template-columns: minmax(0, 1fr) !important;
+    text-align: center;
+  }
+  .skill-globe-wrapper .sg-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+</style>
+<script>
+(function() {
+  function initSkillGlobe() {
+    const canvas = document.getElementById("skillGlobe");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+
+    const tags = [
+      { t: "React", c: "sw" },
+      { t: "Next.js", c: "sw" },
+      { t: "TypeScript", c: "sw" },
+      { t: "Arduino", c: "hw" },
+      { t: "ESP32", c: "hw" },
+      { t: "Laravel", c: "sw" },
+      { t: "Supabase", c: "sw" },
+      { t: "Embedded C++", c: "hw" },
+      { t: "Robot Soccer", c: "hw" },
+      { t: "IARC ITS 2025", c: "hw" },
+      { t: "PID Control", c: "hw" },
+      { t: "Line Follower", c: "hw" },
+      { t: "Sensors Array", c: "hw" },
+      { t: "Motor Drivers", c: "hw" },
+      { t: "Tailwind CSS", c: "sw" },
+      { t: "Circuit Wiring", c: "hw" },
+      { t: "REST API", c: "sw" },
+      { t: "Prisma ORM", c: "sw" },
+      { t: "IoT & Telemetry", c: "hw" },
+      { t: "Git & GitHub", c: "sw" },
+      { t: "Hardware Testing", c: "hw" },
+      { t: "SMKN 2 SBY", c: "sw" },
+      { t: "ELITE Center", c: "hw" }
+    ];
+
+    const N = tags.length;
+    const radius = 160;
+    const items = [];
+
+    // Fibonacci sphere distribution for uniform 3D sphere packing
+    for (let i = 0; i < N; i++) {
+      const phi = Math.acos(-1 + (2 * i + 1) / N);
+      const theta = Math.sqrt(N * Math.PI) * phi;
+      items.push({
+        text: tags[i].t,
+        category: tags[i].c,
+        x: radius * Math.cos(theta) * Math.sin(phi),
+        y: radius * Math.sin(theta) * Math.sin(phi),
+        z: radius * Math.cos(phi)
+      });
+    }
+
+    let rx = 0.0035, ry = 0.005;
+    let targetRx = 0.0035, targetRy = 0.005;
+    let isInteracting = false;
+    let lastX = 0, lastY = 0;
+
+    function handlePointerMove(clientX, clientY) {
+      const rect = canvas.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = clientX - cx;
+      const dy = clientY - cy;
+      targetRy = (dx / (rect.width / 2)) * 0.024;
+      targetRx = -(dy / (rect.height / 2)) * 0.024;
+    }
+
+    canvas.addEventListener("mousemove", (e) => {
+      isInteracting = true;
+      handlePointerMove(e.clientX, e.clientY);
+    });
+
+    canvas.addEventListener("mouseleave", () => {
+      isInteracting = false;
+      targetRx = 0.0035;
+      targetRy = 0.005;
+    });
+
+    canvas.addEventListener("touchstart", (e) => {
+      if (e.touches.length > 0) {
+        lastX = e.touches[0].clientX;
+        lastY = e.touches[0].clientY;
+        isInteracting = true;
+      }
+    }, { passive: true });
+
+    canvas.addEventListener("touchmove", (e) => {
+      if (e.touches.length > 0) {
+        handlePointerMove(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
+
+    canvas.addEventListener("touchend", () => {
+      isInteracting = false;
+      targetRx = 0.0035;
+      targetRy = 0.005;
+    });
+
+    let displayW = 440, displayH = 440;
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const rect = canvas.getBoundingClientRect();
+      displayW = rect.width || 400;
+      displayH = rect.height || 400;
+      canvas.width = displayW * dpr;
+      canvas.height = displayH * dpr;
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    const fov = 340;
+
+    function render() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      ctx.clearRect(0, 0, displayW, displayH);
+
+      // Smooth inertia rotation
+      rx += (targetRx - rx) * 0.08;
+      ry += (targetRy - ry) * 0.08;
+
+      const cosX = Math.cos(rx), sinX = Math.sin(rx);
+      const cosY = Math.cos(ry), sinY = Math.sin(ry);
+
+      items.forEach(item => {
+        // Y-axis rotation
+        const x1 = item.x * cosY - item.z * sinY;
+        const z1 = item.z * cosY + item.x * sinY;
+
+        // X-axis rotation
+        const y2 = item.y * cosX - z1 * sinX;
+        const z2 = z1 * cosX + item.y * sinX;
+
+        item.x = x1;
+        item.y = y2;
+        item.z = z2;
+      });
+
+      // Painter's algorithm: sort back-to-front
+      const sorted = [...items].sort((a, b) => a.z - b.z);
+
+      const isNight = document.documentElement.getAttribute("data-mode") === "night";
+      const accentHw = isNight ? "#c9ef6a" : "#729b15";
+      const accentSw = isNight ? "#b6a3ff" : "#7a62cf";
+      const cx = displayW / 2;
+      const cy = displayH / 2;
+
+      sorted.forEach(item => {
+        const scale = fov / (fov + item.z);
+        const alpha = Math.max(0.18, Math.min(1, (item.z + radius) / (2 * radius) * 0.82 + 0.18));
+        const px = cx + item.x * scale;
+        const py = cy + item.y * scale;
+
+        const fontSize = Math.max(10, Math.round(13 * scale));
+        ctx.font = `600 ${fontSize}px "JetBrains Mono", monospace`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        const textMetrics = ctx.measureText(item.text);
+        const tw = textMetrics.width;
+        const padX = 7 * scale;
+        const padY = 3.5 * scale;
+        const pillW = tw + padX * 2;
+        const pillH = fontSize + padY * 2;
+
+        // Foreground pill badges (z > -30)
+        if (item.z > -35) {
+          ctx.fillStyle = isNight 
+            ? `rgba(20, 24, 46, ${alpha * 0.78})`
+            : `rgba(255, 255, 255, ${alpha * 0.88})`;
+          ctx.beginPath();
+          ctx.roundRect(px - pillW / 2, py - pillH / 2, pillW, pillH, 999);
+          ctx.fill();
+
+          ctx.strokeStyle = item.category === "hw"
+            ? `${accentHw}${Math.round(alpha * 170).toString(16).padStart(2, "0")}`
+            : `${accentSw}${Math.round(alpha * 170).toString(16).padStart(2, "0")}`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+
+        // Tag text
+        const isFocus = item.z > 30;
+        if (isFocus) {
+          ctx.fillStyle = item.category === "hw" ? accentHw : accentSw;
+        } else {
+          ctx.fillStyle = isNight 
+            ? `rgba(238, 240, 246, ${alpha * 0.85})` 
+            : `rgba(27, 31, 23, ${alpha * 0.85})`;
+        }
+
+        ctx.fillText(item.text, px, py);
+      });
+
+      requestAnimationFrame(render);
+    }
+
+    requestAnimationFrame(render);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initSkillGlobe);
+  } else {
+    setTimeout(initSkillGlobe, 100);
+  }
+})();
+</script>
+
 </body>
 </html>
