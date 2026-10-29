@@ -501,10 +501,14 @@
 </style>
 <script>
 (function() {
+  let isGlobeInitialized = false;
+
   function initSkillGlobe() {
     const canvas = document.getElementById("skillGlobe");
-    if (!canvas) return;
+    if (!canvas || isGlobeInitialized) return;
     const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    isGlobeInitialized = true;
 
     // Tech stack with distinctive vector icons
     const tags = [
@@ -551,7 +555,6 @@
     // Slowed down serene auto-rotation speed
     let rx = 0.0011, ry = 0.0016;
     let targetRx = 0.0011, targetRy = 0.0016;
-    let isInteracting = false;
 
     function handlePointerMove(clientX, clientY) {
       const rect = canvas.getBoundingClientRect();
@@ -564,19 +567,15 @@
     }
 
     canvas.addEventListener("mousemove", (e) => {
-      isInteracting = true;
       handlePointerMove(e.clientX, e.clientY);
     });
 
     canvas.addEventListener("mouseleave", () => {
-      isInteracting = false;
       targetRx = 0.0011;
       targetRy = 0.0016;
     });
 
-    canvas.addEventListener("touchstart", (e) => {
-      if (e.touches.length > 0) isInteracting = true;
-    }, { passive: true });
+    canvas.addEventListener("touchstart", (e) => {}, { passive: true });
 
     canvas.addEventListener("touchmove", (e) => {
       if (e.touches.length > 0) {
@@ -585,17 +584,16 @@
     }, { passive: true });
 
     canvas.addEventListener("touchend", () => {
-      isInteracting = false;
       targetRx = 0.0011;
       targetRy = 0.0016;
     });
 
-    let displayW = 440, displayH = 440;
+    let displayW = 420, displayH = 420;
     function resize() {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const rect = canvas.getBoundingClientRect();
-      displayW = rect.width || 420;
-      displayH = rect.height || 420;
+      displayW = rect.width > 0 ? rect.width : 420;
+      displayH = rect.height > 0 ? rect.height : 420;
       canvas.width = displayW * dpr;
       canvas.height = displayH * dpr;
       ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -719,9 +717,8 @@
 
         case "github":
           ctx.beginPath();
-          ctx.arc(0, 1 * s, 7 * s, 0, Math.PI * 2); // head
+          ctx.arc(0, 1 * s, 7 * s, 0, Math.PI * 2);
           ctx.fill();
-          // ears
           ctx.beginPath();
           ctx.moveTo(-5 * s, -4 * s); ctx.lineTo(-3 * s, -7 * s); ctx.lineTo(-1 * s, -5 * s);
           ctx.moveTo(5 * s, -4 * s); ctx.lineTo(3 * s, -7 * s); ctx.lineTo(1 * s, -5 * s);
@@ -739,9 +736,9 @@
           break;
 
         case "robot":
-          ctx.strokeRect(-7 * s, -5 * s, 14 * s, 11 * s); // head
-          ctx.fillRect(-4.5 * s, -2.5 * s, 2.5 * s, 2.5 * s); // eye
-          ctx.fillRect(2 * s, -2.5 * s, 2.5 * s, 2.5 * s); // eye
+          ctx.strokeRect(-7 * s, -5 * s, 14 * s, 11 * s);
+          ctx.fillRect(-4.5 * s, -2.5 * s, 2.5 * s, 2.5 * s);
+          ctx.fillRect(2 * s, -2.5 * s, 2.5 * s, 2.5 * s);
           ctx.beginPath(); ctx.moveTo(0, -5 * s); ctx.lineTo(0, -8.5 * s); ctx.stroke();
           ctx.beginPath(); ctx.arc(0, -9.5 * s, 1.3 * s, 0, Math.PI * 2); ctx.fill();
           ctx.beginPath(); ctx.moveTo(-4 * s, 3.5 * s); ctx.lineTo(4 * s, 3.5 * s); ctx.stroke();
@@ -813,6 +810,7 @@
     const fov = 340;
 
     function render() {
+      if (displayW <= 0 || displayH <= 0) resize();
       ctx.clearRect(0, 0, displayW, displayH);
 
       // Smooth inertia rotation (calm & steady pace)
@@ -895,7 +893,19 @@
     }
 
     requestAnimationFrame(render);
-  }</script>
+  }
+
+  // Auto-init immediately and on ready states
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initSkillGlobe);
+  } else {
+    initSkillGlobe();
+  }
+  window.addEventListener("load", initSkillGlobe);
+  setTimeout(initSkillGlobe, 100);
+  setTimeout(initSkillGlobe, 500);
+})();
+</script>
 
 </body>
 </html>
