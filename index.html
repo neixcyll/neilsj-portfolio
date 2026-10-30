@@ -386,8 +386,8 @@
           <div class="oc-grid">
             <div class="oc-center">
               <div class="oc-stage" id="ocStage">
-                <canvas id="ocCanvas" role="img" aria-label="3D model of Neil Sawabul Jazil sleeping on a cloud. Drag to rotate."></canvas>
-                <img class="oc-fallback" src="/avatar.webp" alt="Illustrated portrait of Neil Sawabul Jazil" hidden>
+                <canvas id="ocCanvas" role="img" aria-label="3D model of Autonomous Robotics Explorer. Drag to rotate."></canvas>
+                <img class="oc-fallback" src="/projects/captgrill.webp" alt="Autonomous Robotics Explorer" hidden>
                 <p class="oc-loading" aria-hidden="true">Loading 3D…</p>
               </div>
               <p class="oc-quote">“Engineering the future through robotics, code, and relentless curiosity.”</p>
@@ -628,6 +628,13 @@ html[data-mode="day"] .about .stats span {
 }
 
 /* Bonus (Off the clock) section: Rapi, proporsional & tidak nempel */
+.oc-stage.ready canvas {
+  opacity: 1 !important;
+}
+.oc-stage.ready .oc-loading {
+  display: none !important;
+  opacity: 0 !important;
+}
 .oc-quote {
   margin: 18px auto 0 !important;
   padding: 8px 18px !important;
