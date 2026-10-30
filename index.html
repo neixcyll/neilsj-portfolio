@@ -87,7 +87,7 @@
         <div class="wrap panel-smoke">
           <div class="ab-bio">
             <h2 class="ab-hello" style="white-space: nowrap; font-size: clamp(38px, 4.4vw, 68px); margin: 0; line-height: 1;">I’m Neil</h2>
-            <p class="ab-desc" style="margin: 0; max-width: 44ch; color: var(--on-smoke-body); font-size: 15.5px; line-height: 1.65;">Software Engineering (RPL) student at SMKN 2 Surabaya and Vice Head of the Robotics Organization. Operating on a Linux-native workstation environment — building autonomous robots, microcontroller firmware on Arduino &amp; ESP32, and high-performance full-stack web applications with React, Next.js, TypeScript, and Laravel.</p>
+            <p class="ab-desc" style="margin: 0; max-width: 44ch; font-size: 15.5px; line-height: 1.65;">Software Engineering (RPL) student at SMKN 2 Surabaya and Vice Head of the Robotics Organization. Operating on a Linux-native workstation environment — building autonomous robots, microcontroller firmware on Arduino &amp; ESP32, and high-performance full-stack web applications with React, Next.js, TypeScript, and Laravel.</p>
           </div>
 
           <div class="ab-photo">
@@ -501,7 +501,24 @@
   }
 }
 
-/* Light Mode: White Cards with Crisp Black Typography & Details */
+/* Dynamic Theme Styling: Light (Day) & Dark (Night) */
+.about .panel-smoke,
+.skill-globe-wrapper,
+.about .ab-hello,
+.about .ab-big,
+.about .ab-desc,
+.about .ab-roles,
+.skill-globe-wrapper h3,
+.skill-globe-wrapper h3 em,
+.skill-globe-wrapper .sg-info .tx,
+.skill-globe-wrapper .sg-info .eyebrow,
+.about .gh-title,
+.about .stats b,
+.about .stats span {
+  transition: color 0.35s ease, background-color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease !important;
+}
+
+/* Light Mode (Day): White Cards with Crisp Black Typography */
 html[data-mode="day"] .about .panel-smoke,
 html[data-mode="day"] .skill-globe-wrapper {
   background: #ffffff !important;
@@ -509,35 +526,18 @@ html[data-mode="day"] .skill-globe-wrapper {
   color: #1b1f17 !important;
   box-shadow: 0 20px 40px -15px rgba(27, 31, 23, 0.07) !important;
 }
-
-/* 3D Interactive Tech & Linux Sphere text colors */
+html[data-mode="day"] .about .ab-hello,
+html[data-mode="day"] .about .ab-big,
 html[data-mode="day"] .skill-globe-wrapper h3,
 html[data-mode="day"] .skill-globe-wrapper h3 em {
   color: #1b1f17 !important;
 }
-html[data-mode="day"] .skill-globe-wrapper .sg-info .eyebrow {
-  color: #4b5563 !important;
-}
+html[data-mode="day"] .about .ab-desc,
 html[data-mode="day"] .skill-globe-wrapper .sg-info .tx {
   color: #374151 !important;
 }
-html[data-mode="night"] .skill-globe-wrapper h3,
-html[data-mode="night"] .skill-globe-wrapper h3 em {
-  color: var(--on-smoke) !important;
-}
-html[data-mode="night"] .skill-globe-wrapper .sg-info .tx {
-  color: var(--on-smoke-body) !important;
-}
-
-/* Biodata Card (About) text & printilan in Light Mode */
-html[data-mode="day"] .about .ab-hello,
-html[data-mode="day"] .about .ab-big {
-  color: #1b1f17 !important;
-}
-html[data-mode="day"] .about .ab-desc {
-  color: #374151 !important;
-}
-html[data-mode="day"] .about .ab-roles {
+html[data-mode="day"] .about .ab-roles,
+html[data-mode="day"] .skill-globe-wrapper .sg-info .eyebrow {
   color: #4b5563 !important;
 }
 html[data-mode="day"] .about .about-word {
@@ -588,6 +588,78 @@ html[data-mode="day"] .about .stats b {
 }
 html[data-mode="day"] .about .stats span {
   color: #4b5563 !important;
+}
+
+/* Dark Mode (Night): Dark Cards with Bright Crisp White & Silver Typography */
+html[data-mode="night"] .about .panel-smoke,
+html[data-mode="night"] .skill-globe-wrapper {
+  background: rgba(6, 8, 18, 0.66) !important;
+  border-color: rgba(255, 255, 255, 0.09) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+html[data-mode="night"] .about .ab-hello,
+html[data-mode="night"] .about .ab-big,
+html[data-mode="night"] .skill-globe-wrapper h3,
+html[data-mode="night"] .skill-globe-wrapper h3 em {
+  color: #ffffff !important;
+}
+html[data-mode="night"] .about .ab-desc,
+html[data-mode="night"] .skill-globe-wrapper .sg-info .tx {
+  color: #d1d6e2 !important;
+}
+html[data-mode="night"] .about .ab-roles,
+html[data-mode="night"] .skill-globe-wrapper .sg-info .eyebrow {
+  color: #949db2 !important;
+}
+html[data-mode="night"] .about .about-word {
+  color: #ffffff !important;
+  opacity: 0.08 !important;
+}
+html[data-mode="night"] .about .ab-icons .soc-ic {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+}
+html[data-mode="night"] .about .ab-icons .soc-ic:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
+}
+html[data-mode="night"] .about .cbtn {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+html[data-mode="night"] .about .dots button {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+html[data-mode="night"] .about .dots button.on {
+  background: #ffffff !important;
+}
+html[data-mode="night"] .about .gh {
+  background: rgba(0, 0, 0, 0.38) !important;
+  border-color: rgba(255, 255, 255, 0.09) !important;
+}
+html[data-mode="night"] .about .gh-title {
+  color: #ffffff !important;
+}
+html[data-mode="night"] .about .gh-legend {
+  color: #8e97aa !important;
+}
+html[data-mode="night"] .about .gh .l0, html[data-mode="night"] .gh-legend .l0 { fill: rgba(255,255,255,.06) !important; background: rgba(255,255,255,.06) !important; }
+html[data-mode="night"] .about .gh .l1, html[data-mode="night"] .gh-legend .l1 { fill: rgba(201,239,106,.22) !important; background: rgba(201,239,106,.22) !important; }
+html[data-mode="night"] .about .gh .l2, html[data-mode="night"] .gh-legend .l2 { fill: rgba(201,239,106,.42) !important; background: rgba(201,239,106,.42) !important; }
+html[data-mode="night"] .about .gh .l3, html[data-mode="night"] .gh-legend .l3 { fill: rgba(201,239,106,.68) !important; background: rgba(201,239,106,.68) !important; }
+html[data-mode="night"] .about .gh .l4, html[data-mode="night"] .gh-legend .l4 { fill: #d8ff7a !important; background: #d8ff7a !important; }
+html[data-mode="night"] .about .stats {
+  border-top-color: rgba(255, 255, 255, 0.09) !important;
+}
+html[data-mode="night"] .about .stats b {
+  color: #ffffff !important;
+}
+html[data-mode="night"] .about .stats span {
+  color: #c5cbd8 !important;
 }
 
 /* Mobile: 5 menu / stats item ke-5 taruh tengah */
